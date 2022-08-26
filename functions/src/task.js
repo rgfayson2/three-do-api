@@ -1,4 +1,4 @@
-import dbConnect from "../dbConnect.js"
+import dbConnect from "./dbConnect.js"
 
 export async function getTasks(req, res) {
   const db = dbConnect()

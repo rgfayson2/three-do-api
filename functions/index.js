@@ -1,7 +1,7 @@
-import functions from ("firebase-functions");
+import functions from "firebase-functions";
 import express from "express"
 import cors from "cors"
-import { getTasks, createTasks, updateTasks, deleteTasks } from "./src/task.js";
+import { getTasks, createTask, updateTask, deleteTask } from "./src/task.js";
 
 
 const app = express()
@@ -10,9 +10,9 @@ app.use(express.json())
 
 
 app.get('/tasks', getTasks)
-app.post('/tasks', createTasks)
-app.patch('/tasks/:taskId', updateTasks)
-app.delete('/tasks/:taskId', deleteTasks)
+app.post('/tasks', createTask)
+app.patch('/tasks/:taskId', updateTask)
+app.delete('/tasks/:taskId', deleteTask)
 
 
 export const api = functions.https.onRequest(app);
