@@ -2,16 +2,14 @@ import dbConnect from "./dbConnect.js"
 
 export async function getTasks(req, res) {
   const db = dbConnect()
-  const collection = await db
-    .collection("tasks")
-    .get()
+  const collection = await db.collection('tasks').get()
     .catch((err) => res.status(500).send(err))
-  const tasks = collection.docs.map((doc) => {
+  const task = collection.docs.map((doc) => {
     let task = doc.data()
     task.id = doc.id
     return task
   })
-  res.send(tasks)
+  res.send(task)
 }
 
 export async function createTask(req, res) {
